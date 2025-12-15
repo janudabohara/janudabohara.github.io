@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>januda bohara</title>
+    <link rel="stylesheet" href="portfolio.css">
     <style>
         * {
             margin: 0;
@@ -11,361 +12,6 @@
             box-sizing: border-box;
         }
 
-        :root {
-            --primary-color: #2c3e50;
-            --accent-color: #3498db;
-            --text-light: #7f8c8d;
-            --background: #ffffff;
-            --section-bg: #f8f9fa;
-            --border-color: #e1e8ed;
-            --hover-color: #2980b9;
-            --shadow: 0 2px 10px rgba(0,0,0,0.08);
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
-            color: var(--primary-color);
-            background: var(--background);
-            overflow-x: hidden;
-        }
-
-        /* Header & Navigation */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            z-index: 1000;
-            transition: var(--transition);
-        }
-
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--primary-color);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .logo:hover {
-            color: var(--accent-color);
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-link {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 500;
-            position: relative;
-            transition: var(--transition);
-            cursor: pointer;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent-color);
-            transition: var(--transition);
-        }
-
-        .nav-link:hover::after,
-        .nav-link.active::after {
-            width: 100%;
-        }
-
-        .nav-link:hover,
-        .nav-link.active {
-            color: var(--accent-color);
-        }
-
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            padding: 5px;
-        }
-
-        .hamburger span {
-            width: 25px;
-            height: 2px;
-            background: var(--primary-color);
-            margin: 3px 0;
-            transition: var(--transition);
-        }
-
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -6px);
-        }
-
-        /* Main Content */
-        main {
-            margin-top: 70px;
-            min-height: calc(100vh - 70px);
-        }
-
-        .section {
-            padding: 4rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            animation: fadeIn 0.6s ease-out;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Home Section */
-        .home-content {
-            display: grid;
-            grid-template-columns: 300px 1fr;
-            gap: 4rem;
-            align-items: center;
-            margin-top: 2rem;
-        }
-
-        .profile-section {
-            text-align: center;
-        }
-
-        .profile-pic-container {
-            position: relative;
-            width: 250px;
-            height: 250px;
-            margin: 0 auto 2rem;
-        }
-
-        .profile-pic {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--border-color);
-            transition: var(--transition);
-        }
-
-        .profile-pic:hover {
-            transform: scale(1.05);
-            box-shadow: var(--shadow);
-        }
-
-        .bio-section h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-        }
-
-        .tagline {
-            font-size: 1.25rem;
-            color: var(--accent-color);
-            margin-bottom: 2rem;
-            font-weight: 300;
-        }
-
-        .bio-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--text-light);
-            margin-bottom: 3rem;
-        }
-
-        .contact-links {
-            display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .contact-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            background: var(--background);
-            border: 2px solid var(--border-color);
-            border-radius: 50px;
-            text-decoration: none;
-            color: var(--primary-color);
-            font-weight: 500;
-            transition: var(--transition);
-        }
-
-        .contact-link:hover {
-            background: var(--accent-color);
-            color: white;
-            border-color: var(--accent-color);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow);
-        }
-
-        .contact-link svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        /* Content Sections */
-        .content-section {
-            background: var(--section-bg);
-            border-radius: 12px;
-            padding: 3rem;
-            margin-bottom: 2rem;
-        }
-
-        .content-section h2 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary-color);
-        }
-
-        .content-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .content-card {
-            background: var(--background);
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            transition: var(--transition);
-        }
-
-        .content-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow);
-        }
-
-        .content-card h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        .content-card p {
-            color: var(--text-light);
-            line-height: 1.6;
-        }
-
-        .placeholder-text {
-            color: var(--text-light);
-            font-style: italic;
-            text-align: center;
-            padding: 3rem;
-            background: rgba(52, 152, 219, 0.05);
-            border-radius: 8px;
-            border: 2px dashed var(--border-color);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hamburger {
-                display: flex;
-            }
-
-            .nav-menu {
-                position: fixed;
-                left: -100%;
-                top: 70px;
-                flex-direction: column;
-                background: rgba(255, 255, 255, 0.98);
-                backdrop-filter: blur(10px);
-                width: 100%;
-                text-align: center;
-                transition: var(--transition);
-                box-shadow: 0 10px 27px rgba(0,0,0,0.05);
-                padding: 2rem 0;
-            }
-
-            .nav-menu.active {
-                left: 0;
-            }
-
-            .nav-link {
-                padding: 0.5rem 0;
-            }
-
-            .home-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-                text-align: center;
-            }
-
-            .bio-section h1 {
-                font-size: 2rem;
-            }
-
-            .contact-links {
-                justify-content: center;
-            }
-
-            .content-section {
-                padding: 2rem 1.5rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .section {
-                padding: 2rem 1rem;
-            }
-
-            .profile-pic-container {
-                width: 200px;
-                height: 200px;
-            }
-
-            .bio-section h1 {
-                font-size: 1.75rem;
-            }
-
-            .tagline {
-                font-size: 1.1rem;
-            }
-
-            .contact-link {
-                padding: 0.6rem 1.2rem;
-                font-size: 0.9rem;
-            }
-        }
     </style>
 </head>
 <body>
@@ -375,8 +21,7 @@
             <ul class="nav-menu">
                 <li><a class="nav-link active" data-section="home">Home</a></li>
                 <li><a class="nav-link" data-section="research">Research</a></li>
-                <li><a class="nav-link" data-section="exhibitions">Exhibitions</a></li>
-                <li><a class="nav-link" data-section="workshops">Workshops</a></li>
+                <li><a class="nav-link" data-section="events">Events</a></li>
                 <li><a class="nav-link" data-section="projects">Projects</a></li>
                 <li><a class="nav-link" data-section="other">Other Works</a></li>
             </ul>
@@ -394,23 +39,27 @@
             <div class="home-content">
                 <div class="profile-section">
                     <div class="profile-pic-container">
-                        <img src="X:\Portfolio website\images" alt="Profile Picture" class="profile-pic">
+                        <img src="Pictures/IMG_252f3.jpg" alt="Profile Picture" class="profile-pic">
                     </div>
                 </div>
                 <div class="bio-section">
-                    <h1>Your Name</h1>
-                    <p class="tagline">Student | Researcher | Creative Professional</p>
+                    <h1>Bohara Satharasinghe</h1>
+                    <p class="tagline">Pre-University Research Assistant at the Multidisciplinary AI Research Center (MARC), University of Peradeniya.</p>
                     <p class="bio-text">
-                        Welcome to my portfolio! I'm a passionate student dedicated to exploring the intersection of technology, creativity, and innovation. My work spans across research, exhibitions, workshops, and various creative projects. I believe in the power of interdisciplinary collaboration and continuous learning to drive meaningful change.
+                     Hello, and welcome! My portfolio reflects a deep curiosity that inspires me to explore innovative and multidisciplinary fields. I have had the opportunity to contribute to diverse research projects, and I am currently serving as a Pre-University Research Assistant at the 
+                     <a href="https://marc.pdn.ac.lk/" target="_blank">Multidisciplinary AI Research Center (MARC)</a>, 
+                     <a href="https://www.pdn.ac.lk/" target="_blank">University of Peradeniya</a>. 
+                     Through these experiences, I strive to merge technological advancements with meaningful real-world impact.
                     </p>
+
                     <div class="contact-links">
-                        <a href="https://linkedin.com/in/yourprofile" target="_blank" class="contact-link">
+                        <a href="https://linkedin.com/in/janudaa" target="_blank" class="contact-link">
                             <svg fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                             </svg>
                             LinkedIn
                         </a>
-                        <a href="mailto:your.email@example.com" class="contact-link">
+                        <a href="mailto:bohara.sat@gmail.com" class="contact-link">
                             <svg fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M12 12.713l-11.985-9.713h23.971l-11.986 9.713zm-5.425-1.822l-6.575-5.329v12.501l6.575-7.172zm10.85 0l6.575 7.172v-12.501l-6.575 5.329zm-1.557 1.261l-3.868 3.135-3.868-3.135-8.11 8.848h23.956l-8.11-8.848z"/>
                             </svg>
@@ -447,37 +96,22 @@
             </div>
         </section>
 
-        <!-- Exhibitions Section -->
-        <section id="exhibitions" class="section hidden">
+        <!-- Events Section -->
+        <section id="events" class="section hidden">
             <div class="content-section">
-                <h2>Exhibitions</h2>
+                <h2>Events</h2>
                 <p class="placeholder-text">
                     Showcase your exhibitions, gallery shows, and public displays here.
                 </p>
                 <div class="content-grid">
                     <div class="content-card">
-                        <h3>Exhibition Title</h3>
-                        <p>Date, venue, and description of your exhibition.</p>
+                        <h3>Events Title</h3>
+                        <p>Date, venue, and description of your event.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Workshops Section -->
-        <section id="workshops" class="section hidden">
-            <div class="content-section">
-                <h2>Workshops</h2>
-                <p class="placeholder-text">
-                    Document workshops you've conducted or participated in.
-                </p>
-                <div class="content-grid">
-                    <div class="content-card">
-                        <h3>Workshop Name</h3>
-                        <p>Details about the workshop, participants, and outcomes.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- Projects Section -->
         <section id="projects" class="section hidden">
