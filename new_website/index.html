@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Januda Bohara | Research Assistant & Developer</title>
+    <meta name="description" content="Portfolio of Januda Bohara - Pre-University Research Assistant at MARC, University of Peradeniya">
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="loading-logo">JB</div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor cursor-dot" id="cursorDot"></div>
+    <div class="cursor cursor-outline" id="cursorOutline"></div>
+
+    <!-- Background Canvas -->
+    <canvas id="bgCanvas" class="bg-canvas"></canvas>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="nav">
+            <a href="#home" class="logo magnetic-element">
+                <span class="logo-text">JB</span>
+                <span class="logo-dot"></span>
+            </a>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link magnetic-element" data-text="Home">Home</a></li>
+                <li><a href="#about" class="nav-link magnetic-element" data-text="About">About</a></li>
+                <li><a href="#research" class="nav-link magnetic-element" data-text="Research">Research</a></li>
+                <li><a href="#projects" class="nav-link magnetic-element" data-text="Projects">Projects</a></li>
+                <li><a href="#contact" class="nav-link magnetic-element" data-text="Contact">Contact</a></li>
+            </ul>
+
+            <div class="nav-controls">
+                <button class="theme-toggle magnetic-element" id="themeToggle" aria-label="Toggle theme">
+                    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="12" cy="12" r="5"/>
+                        <line x1="12" y1="1" x2="12" y2="3"/>
+                        <line x1="12" y1="21" x2="12" y2="23"/>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                        <line x1="1" y1="12" x2="3" y2="12"/>
+                        <line x1="21" y1="12" x2="23" y2="12"/>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                    </svg>
+                    <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                </button>
+
+                <button class="menu-toggle magnetic-element" id="menuToggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-bg">
+                <div class="gradient-orb orb-1"></div>
+                <div class="gradient-orb orb-2"></div>
+                <div class="gradient-orb orb-3"></div>
+            </div>
+
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <div class="hero-greeting">
+                            <span class="reveal-text" data-delay="0">Hello, I'm</span>
+                        </div>
+                        <h1 class="hero-title">
+                            <span class="title-line">
+                                <span class="reveal-text" data-delay="200">Januda</span>
+                            </span>
+                            <span class="title-line">
+                                <span class="reveal-text accent" data-delay="400">Bohara</span>
+                            </span>
+                        </h1>
+                        <div class="hero-role">
+                            <span class="role-text reveal-text" data-delay="600">Pre-University Research Assistant</span>
+                            <div class="role-tags">
+                                <span class="tag reveal-text" data-delay="700">AI</span>
+                                <span class="tag reveal-text" data-delay="800">Research</span>
+                                <span class="tag reveal-text" data-delay="900">Innovation</span>
+                            </div>
+                        </div>
+                        <p class="hero-description reveal-text" data-delay="1000">
+                            Currently at <a href="https://marc.pdn.ac.lk/" target="_blank" class="link-underline">MARC</a>,
+                            University of Peradeniya. Exploring multidisciplinary AI research and creating
+                            technological solutions with real-world impact.
+                        </p>
+                        <div class="hero-buttons reveal-text" data-delay="1200">
+                            <a href="#projects" class="btn btn-primary magnetic-element">
+                                <span>View Projects</span>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                            </a>
+                            <a href="#contact" class="btn btn-secondary magnetic-element">Get In Touch</a>
+                        </div>
+                    </div>
+
+                    <div class="hero-visual">
+                        <div class="profile-container" id="profileContainer">
+                            <div class="profile-ring ring-1"></div>
+                            <div class="profile-ring ring-2"></div>
+                            <div class="profile-ring ring-3"></div>
+                            <div class="profile-image-wrapper">
+                                <img src="../Pictures/IMG_252f3.jpg" alt="Januda Bohara" class="profile-image">
+                                <div class="profile-glow"></div>
+                            </div>
+                            <div class="floating-icons">
+                                <div class="float-icon icon-1">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                                    </svg>
+                                </div>
+                                <div class="float-icon icon-2">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                                    </svg>
+                                </div>
+                                <div class="float-icon icon-3">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <rect x="4" y="4" width="16" height="16" rx="2" ry="2"/>
+                                        <rect x="9" y="9" width="6" height="6"/>
+                                        <line x1="9" y1="1" x2="9" y2="4"/>
+                                        <line x1="15" y1="1" x2="15" y2="4"/>
+                                        <line x1="9" y1="20" x2="9" y2="23"/>
+                                        <line x1="15" y1="20" x2="15" y2="23"/>
+                                        <line x1="20" y1="9" x2="23" y2="9"/>
+                                        <line x1="20" y1="14" x2="23" y2="14"/>
+                                        <line x1="1" y1="9" x2="4" y2="9"/>
+                                        <line x1="1" y1="14" x2="4" y2="14"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scroll-indicator">
+                <div class="mouse">
+                    <div class="wheel"></div>
+                </div>
+                <span>Scroll</span>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about section" id="about">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label fade-up">About Me</span>
+                    <h2 class="section-title fade-up">Who I Am</h2>
+                    <p class="section-subtitle fade-up">A glimpse into my journey and what drives me forward.</p>
+                </div>
+
+                <div class="about-grid">
+                    <div class="about-card card-3d fade-up" data-delay="100">
+                        <div class="card-content">
+                            <div class="card-icon">
+                                <div class="icon-bg"></div>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M12 14l9-5-9-5-9 5 9 5z"/>
+                                    <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
+                                </svg>
+                            </div>
+                            <h3>Education</h3>
+                            <p>Pre-University Research Assistant at MARC, University of Peradeniya. Constantly learning and pushing boundaries in AI and technology.</p>
+                        </div>
+                        <div class="card-shine"></div>
+                    </div>
+
+                    <div class="about-card card-3d fade-up" data-delay="200">
+                        <div class="card-content">
+                            <div class="card-icon">
+                                <div class="icon-bg"></div>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                                </svg>
+                            </div>
+                            <h3>Research</h3>
+                            <p>Working on multidisciplinary AI projects that bridge the gap between innovation and real-world applications.</p>
+                        </div>
+                        <div class="card-shine"></div>
+                    </div>
+
+                    <div class="about-card card-3d fade-up" data-delay="300">
+                        <div class="card-content">
+                            <div class="card-icon">
+                                <div class="icon-bg"></div>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                </svg>
+                            </div>
+                            <h3>Passion</h3>
+                            <p>Driven by curiosity to explore new frontiers. I believe technology should create meaningful impact.</p>
+                        </div>
+                        <div class="card-shine"></div>
+                    </div>
+                </div>
+
+                <div class="stats-row fade-up">
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="2">0</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="5">0</div>
+                        <div class="stat-label">Projects</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="3">0</div>
+                        <div class="stat-label">Research Papers</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="100" data-suffix="%">0</div>
+                        <div class="stat-label">Dedication</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Section -->
+        <section class="research section section-alt" id="research">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label fade-up">Research</span>
+                    <h2 class="section-title fade-up">Research Work</h2>
+                    <p class="section-subtitle fade-up">Contributions to AI and multidisciplinary research.</p>
+                </div>
+
+                <div class="research-list">
+                    <article class="research-item fade-up">
+                        <div class="research-number">01</div>
+                        <div class="research-content">
+                            <div class="research-meta">
+                                <span class="research-year">2024</span>
+                                <span class="research-category">Machine Learning</span>
+                            </div>
+                            <h3>AI Research Project Title</h3>
+                            <p>Description of your research project, methodology used, and key findings. This represents cutting-edge work in AI applications.</p>
+                            <div class="research-tags">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">TensorFlow</span>
+                                <span class="tech-tag">Computer Vision</span>
+                            </div>
+                        </div>
+                        <div class="research-image tilt-card">
+                            <div class="image-placeholder">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="research-item fade-up" data-direction="reverse">
+                        <div class="research-number">02</div>
+                        <div class="research-content">
+                            <div class="research-meta">
+                                <span class="research-year">2024</span>
+                                <span class="research-category">Deep Learning</span>
+                            </div>
+                            <h3>Another Research Initiative</h3>
+                            <p>Exploring novel approaches to deep learning problems with practical applications in real-world scenarios.</p>
+                            <div class="research-tags">
+                                <span class="tech-tag">PyTorch</span>
+                                <span class="tech-tag">NLP</span>
+                                <span class="tech-tag">Research</span>
+                            </div>
+                        </div>
+                        <div class="research-image tilt-card">
+                            <div class="image-placeholder">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="research-item fade-up">
+                        <div class="research-number">03</div>
+                        <div class="research-content">
+                            <div class="research-meta">
+                                <span class="research-year">2025</span>
+                                <span class="research-category">Publication</span>
+                            </div>
+                            <h3>Published Research Paper</h3>
+                            <p>Academic publication presenting findings from extensive research. Contributing to the scientific community.</p>
+                            <div class="research-tags">
+                                <span class="tech-tag">Academic</span>
+                                <span class="tech-tag">Conference</span>
+                                <span class="tech-tag">Publication</span>
+                            </div>
+                        </div>
+                        <div class="research-image tilt-card">
+                            <div class="image-placeholder">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="projects section" id="projects">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label fade-up">Projects</span>
+                    <h2 class="section-title fade-up">Featured Work</h2>
+                    <p class="section-subtitle fade-up">A selection of projects I've worked on.</p>
+                </div>
+
+                <div class="projects-grid">
+                    <div class="project-card card-3d fade-up featured">
+                        <div class="card-content">
+                            <div class="project-header">
+                                <div class="project-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                                    </svg>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#" class="project-link magnetic-element" aria-label="View Code">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                            <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                                        </svg>
+                                    </a>
+                                    <a href="#" class="project-link magnetic-element" aria-label="Live Demo">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                            <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                            <h3>Project Title</h3>
+                            <p>A comprehensive project description explaining the problem solved, technologies used, and your role in development.</p>
+                            <div class="project-tech">
+                                <span class="tech-badge">Python</span>
+                                <span class="tech-badge">TensorFlow</span>
+                                <span class="tech-badge">React</span>
+                            </div>
+                        </div>
+                        <div class="card-shine"></div>
+                    </div>
+
+                    <div class="project-card card-3d fade-up" data-delay="100">
+                        <div class="card-content">
+                            <div class="project-header">
+                                <div class="project-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+                                    </svg>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#" class="project-link magnetic-element" aria-label="View Code">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                            <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                            <h3>Another Project</h3>
+                            <p>Description highlighting different skills and technologies used in this project.</p>
+                            <div class="project-tech">
+                                <span class="tech-badge">JavaScript</span>
+                                <span class="tech-badge">Node.js</span>
+                            </div>
+                        </div>
+                        <div class="card-shine"></div>
+                    </div>
+
+                    <div class="project-card card-3d fade-up" data-delay="200">
+                        <div class="card-content">
+                            <div class="project-header">
+                                <div class="project-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                                    </svg>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#" class="project-link magnetic-element" aria-label="View Code">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                            <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                            <h3>Third Project</h3>
+                            <p>Another project showcasing different areas of expertise.</p>
+                            <div class="project-tech">
+                                <span class="tech-badge">Python</span>
+                                <span class="tech-badge">OpenCV</span>
+                            </div>
+                        </div>
+                        <div class="card-shine"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="skills section section-alt" id="skills">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label fade-up">Skills</span>
+                    <h2 class="section-title fade-up">Technologies</h2>
+                    <p class="section-subtitle fade-up">Tools and technologies I work with.</p>
+                </div>
+
+                <div class="skills-marquee">
+                    <div class="marquee-row">
+                        <div class="marquee-content">
+                            <span class="skill-item-lg">Python</span>
+                            <span class="skill-item-lg">TensorFlow</span>
+                            <span class="skill-item-lg">PyTorch</span>
+                            <span class="skill-item-lg">JavaScript</span>
+                            <span class="skill-item-lg">React</span>
+                            <span class="skill-item-lg">Node.js</span>
+                            <span class="skill-item-lg">OpenCV</span>
+                            <span class="skill-item-lg">Git</span>
+                            <span class="skill-item-lg">Linux</span>
+                            <span class="skill-item-lg">Python</span>
+                            <span class="skill-item-lg">TensorFlow</span>
+                            <span class="skill-item-lg">PyTorch</span>
+                            <span class="skill-item-lg">JavaScript</span>
+                            <span class="skill-item-lg">React</span>
+                            <span class="skill-item-lg">Node.js</span>
+                            <span class="skill-item-lg">OpenCV</span>
+                            <span class="skill-item-lg">Git</span>
+                            <span class="skill-item-lg">Linux</span>
+                        </div>
+                    </div>
+                    <div class="marquee-row reverse">
+                        <div class="marquee-content">
+                            <span class="skill-item-lg">Machine Learning</span>
+                            <span class="skill-item-lg">Deep Learning</span>
+                            <span class="skill-item-lg">Computer Vision</span>
+                            <span class="skill-item-lg">NLP</span>
+                            <span class="skill-item-lg">Data Analysis</span>
+                            <span class="skill-item-lg">Research</span>
+                            <span class="skill-item-lg">Machine Learning</span>
+                            <span class="skill-item-lg">Deep Learning</span>
+                            <span class="skill-item-lg">Computer Vision</span>
+                            <span class="skill-item-lg">NLP</span>
+                            <span class="skill-item-lg">Data Analysis</span>
+                            <span class="skill-item-lg">Research</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact section" id="contact">
+            <div class="container">
+                <div class="contact-wrapper">
+                    <div class="contact-info fade-up">
+                        <span class="section-label">Contact</span>
+                        <h2>Let's Work Together</h2>
+                        <p>Have a project in mind or want to collaborate? I'd love to hear from you.</p>
+
+                        <div class="contact-links">
+                            <a href="mailto:bohara.sat@gmail.com" class="contact-link-large magnetic-element">
+                                <div class="link-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                    </svg>
+                                </div>
+                                <div class="link-content">
+                                    <span class="link-label">Email</span>
+                                    <span class="link-value">bohara.sat@gmail.com</span>
+                                </div>
+                            </a>
+
+                            <a href="https://linkedin.com/in/janudaa" target="_blank" class="contact-link-large magnetic-element">
+                                <div class="link-icon">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                    </svg>
+                                </div>
+                                <div class="link-content">
+                                    <span class="link-label">LinkedIn</span>
+                                    <span class="link-value">linkedin.com/in/janudaa</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <form class="contact-form fade-up" id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" required placeholder=" ">
+                            <label for="name">Your Name</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" required placeholder=" ">
+                            <label for="email">Your Email</label>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" rows="4" required placeholder=" "></textarea>
+                            <label for="message">Your Message</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-large magnetic-element">
+                            <span>Send Message</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <span class="footer-logo">JB</span>
+                    <p class="footer-text">Building the future with AI and innovation.</p>
+                </div>
+                <div class="footer-right">
+                    <div class="footer-social">
+                        <a href="https://linkedin.com/in/janudaa" target="_blank" class="social-icon magnetic-element" aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon magnetic-element" aria-label="GitHub">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                        <a href="mailto:bohara.sat@gmail.com" class="social-icon magnetic-element" aria-label="Email">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 12.713l-11.985-9.713h23.971l-11.986 9.713zm-5.425-1.822l-6.575-5.329v12.501l6.575-7.172zm10.85 0l6.575 7.172v-12.501l-6.575 5.329zm-1.557 1.261l-3.868 3.135-3.868-3.135-8.11 8.848h23.956l-8.11-8.848z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">© 2025 Januda Bohara. Crafted with passion.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
