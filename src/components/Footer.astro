@@ -1,0 +1,41 @@
+---
+import { publishedConnect, publishedCredentials, siteConfig } from '../config/site';
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="relative z-10 w-full max-w-[1344px] mx-auto px-5 md:px-12 pb-8 pt-12">
+  <div class="border-t border-hairline pt-8 grid gap-10 md:grid-cols-[1fr_auto_auto] md:items-start">
+    <div class="max-w-sm">
+      <img src="/brand/jb-monogram.png" alt="" width="36" height="36" class="h-9 w-9 object-contain mb-5" />
+      <p class="font-serif text-2xl leading-tight">{siteConfig.name}</p>
+      <p class="text-sm text-ink-muted mt-2 leading-relaxed">{siteConfig.role}</p>
+    </div>
+
+    {publishedConnect.length > 0 && (
+      <nav aria-label="Connect" class="min-w-44">
+        <h2 class="font-mono text-[10px] tracking-[.12em] uppercase text-ink-muted mb-4">Connect</h2>
+        <ul class="space-y-3 text-sm">
+          {publishedConnect.map((destination) => (
+            <li><a class="hover:text-ink-muted transition-colors" href={destination.href} target={destination.href.startsWith('http') ? '_blank' : undefined} rel={destination.href.startsWith('http') ? 'noopener noreferrer' : undefined}>{destination.label} <span aria-hidden="true">↗</span></a></li>
+          ))}
+        </ul>
+      </nav>
+    )}
+
+    {publishedCredentials.length > 0 && (
+      <nav aria-label="Profiles and credentials" class="min-w-56">
+        <h2 class="font-mono text-[10px] tracking-[.12em] uppercase text-ink-muted mb-4">Profiles & credentials</h2>
+        <ul class="space-y-3 text-sm">
+          {publishedCredentials.map((destination) => (
+            <li><a class="hover:text-ink-muted transition-colors" href={destination.href} target="_blank" rel="noopener noreferrer">{destination.label} <span aria-hidden="true">↗</span></a></li>
+          ))}
+        </ul>
+      </nav>
+    )}
+  </div>
+  <div class="mt-10 pt-5 border-t border-hairline flex flex-wrap justify-between gap-3 font-mono text-[10px] tracking-[.12em] uppercase text-ink-muted">
+    <span>© {currentYear} {siteConfig.name}</span>
+    <span>Built as a quiet record of real work.</span>
+  </div>
+</footer>

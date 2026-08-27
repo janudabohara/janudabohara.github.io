@@ -1,0 +1,12 @@
+---
+import ArchiveFilter, { type ArchiveItem } from './islands/ArchiveFilter';
+
+interface Props { folio: string; title: string; description: string; items: ArchiveItem[]; label: string; }
+const { folio, title, description, items, label } = Astro.props;
+---
+<header class="pt-6 pb-14 md:pb-20 border-b border-hairline mb-12">
+  <p class="font-mono text-[10px] tracking-[.12em] uppercase text-ink-muted">{folio} <span class="px-2">/</span> Archive</p>
+  <h1 class="mt-6 font-serif text-6xl md:text-8xl leading-[.9]">{title}</h1>
+  <p class="mt-10 max-w-2xl text-lg md:text-xl leading-relaxed text-ink-secondary">{description}</p>
+</header>
+<ArchiveFilter items={items} label={label} client:load />

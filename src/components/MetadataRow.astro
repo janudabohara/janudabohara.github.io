@@ -1,0 +1,5 @@
+---
+interface Props { items: Array<string | undefined>; }
+const items = Astro.props.items.filter(Boolean) as string[];
+---
+{items.length > 0 && <p class="font-mono text-[10px] leading-relaxed tracking-[.12em] uppercase text-ink-muted">{items.map((item, index) => <><span>{item}</span>{index < items.length - 1 && <span class="px-2">/</span>}</>)}</p>}

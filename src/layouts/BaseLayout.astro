@@ -1,0 +1,44 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+import Footer from '../components/Footer.astro';
+import Navigation from '../components/Navigation.astro';
+import { siteConfig } from '../config/site';
+import '../styles/global.css';
+
+interface Props { title: string; description?: string; image?: string; type?: 'website' | 'article'; }
+const { title, description = siteConfig.description, image = '/brand/jb-monogram.png', type = 'website' } = Astro.props;
+const base = Astro.site ?? new URL('http://localhost:4321');
+const canonical = new URL(Astro.url.pathname, base);
+const socialImage = new URL(image, base);
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="theme-color" content="#fbf8f2" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/png" href="/brand/jb-monogram.png" />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" type="application/rss+xml" title={`${siteConfig.name} Journal`} href="/rss.xml" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={siteConfig.name} />
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={socialImage} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=DM+Sans:opsz,wght@9..40,400;9..40,500&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet" />
+    <ViewTransitions />
+  </head>
+  <body class="min-h-screen flex flex-col relative overflow-x-hidden font-sans">
+    <div aria-hidden="true" class="fixed inset-0 z-[-2] bg-[radial-gradient(circle_at_82%_8%,rgba(234,205,186,.62),transparent_28%),radial-gradient(circle_at_5%_85%,rgba(217,222,209,.55),transparent_27%),linear-gradient(135deg,#fbf8f2,#f4efe6)]"></div>
+    <div aria-hidden="true" class="noise-overlay"></div>
+    <Navigation />
+    <main id="main-content" class="flex-grow flex flex-col pt-36 pb-16 px-5 md:px-12 max-w-[1440px] mx-auto w-full relative z-10"><slot /></main>
+    <Footer />
+  </body>
+</html>

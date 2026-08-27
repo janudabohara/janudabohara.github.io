@@ -1,0 +1,9 @@
+---
+import { getCollection } from 'astro:content';
+import ArchivePage from '../../components/ArchivePage.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const entries = (await getCollection('field-notes', ({ data }) => !data.draft)).sort((a,b) => (a.data.displayOrder ?? 999) - (b.data.displayOrder ?? 999) || b.data.date.valueOf() - a.data.date.valueOf());
+const items = entries.map((entry, index) => ({ slug: entry.slug, title: entry.data.title, summary: entry.data.summary, tags: entry.data.tags, folio: `FN-${String(index + 1).padStart(3,'0')}`, url: `/field-notes/${entry.slug}`, date: entry.data.date.getFullYear().toString() }));
+---
+<BaseLayout title="Field Notes — Januda Bohara"><ArchivePage folio="02" title="Field Notes" description="Events, organizing, creative work, collaborations, and non-technical projects presented as editorial stories." items={items} label="Notes" /></BaseLayout>

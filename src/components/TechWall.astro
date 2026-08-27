@@ -1,0 +1,62 @@
+---
+const categories = [
+  {
+    title: 'Software Engineering',
+    skills: [
+      { name: 'Python', context: 'Research and software tooling' },
+      { name: 'JavaScript', context: 'Interactive web work' },
+      { name: 'Git', context: 'Versioned development' },
+    ],
+  },
+  {
+    title: 'AI & Research',
+    skills: [
+      { name: 'Implicit neural representations', context: 'Current research area' },
+      { name: 'DDPM', context: 'Diffusion-model research' },
+      { name: 'Machine learning', context: 'Experimentation and evaluation' },
+    ],
+  },
+  {
+    title: 'Robotics & Embedded Systems',
+    skills: [
+      { name: 'Electronics', context: 'Prototyping and systems work' },
+      { name: 'Robotics', context: 'Research and project context' },
+    ],
+  },
+  {
+    title: 'Mobile & Interfaces',
+    skills: [
+      { name: 'Swift', context: 'iOS development' },
+      { name: 'SwiftUI', context: 'Native interface development' },
+      { name: 'UI / UX design', context: 'Product and interaction design' },
+    ],
+  },
+  {
+    title: 'Web & Tools',
+    skills: [
+      { name: 'HTML / CSS', context: 'Accessible interfaces' },
+      { name: 'React', context: 'Purposeful interactive clients' },
+      { name: 'Linux', context: 'Development environment' },
+    ],
+  },
+];
+---
+
+<div class="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
+  {categories.map((category) => (
+    <section class="rounded-[20px] bg-soft/70 border border-hairline p-5 min-w-0">
+      <h3 class="font-mono text-[10px] leading-relaxed tracking-[.12em] uppercase text-ink-muted min-h-10">{category.title}</h3>
+      <ul class="mt-5 space-y-5">
+        {category.skills.map((skill) => (
+          <li class="grid grid-cols-[20px_1fr] gap-3 min-w-0">
+            <span aria-hidden="true" class="mt-1 h-5 w-5 rounded-full bg-ink text-white grid place-items-center font-mono text-[7px]">{skill.name.slice(0, 1)}</span>
+            <span class="min-w-0">
+              <strong class="block text-sm font-medium leading-snug break-words">{skill.name}</strong>
+              <span class="block mt-1 text-xs text-ink-muted leading-relaxed">{skill.context}</span>
+            </span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))}
+</div>

@@ -1,0 +1,8 @@
+---
+interface Props { src: string; alt: string; caption?: string; folio?: string; muted?: boolean; }
+const { src, alt, caption, folio = 'FIG.', muted = false } = Astro.props;
+---
+<figure class="glass-mat rounded-[28px] p-4 md:p-6">
+  <img src={src} alt={alt} loading="lazy" class:list={['w-full rounded-[16px] object-cover', muted && 'saturate-[.72] sepia-[.08]']} />
+  {(caption || folio) && <figcaption class="mt-4 font-mono text-[10px] leading-relaxed tracking-[.12em] uppercase text-ink-muted">{folio}{caption && <><span class="px-2">/</span>{caption}</>}</figcaption>}
+</figure>

@@ -1,0 +1,18 @@
+---
+import { getCollection } from 'astro:content';
+import MetadataRow from '../../components/MetadataRow.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('journal', ({ data }) => !data.draft);
+  return entries.map(entry => ({ params: { slug: entry.slug }, props: { entry } }));
+}
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+<BaseLayout title={`${entry.data.title} — Januda Bohara`} description={entry.data.excerpt ?? entry.data.summary} type="article" image={entry.data.coverImage?.src}>
+  <article>
+    <header class="pt-6 pb-14 border-b border-hairline"><MetadataRow items={['Journal', entry.data.date.toLocaleDateString('en',{year:'numeric',month:'long',day:'numeric'}), entry.data.readingMetadata, entry.data.author]} /><h1 class="mt-7 font-serif text-6xl md:text-8xl leading-[.9]">{entry.data.title}</h1><p class="mt-10 max-w-3xl text-xl leading-relaxed text-ink-secondary">{entry.data.excerpt ?? entry.data.summary}</p></header>
+    <div class="article-copy glass-panel rounded-[32px] p-7 md:p-14 max-w-4xl mx-auto my-12"><Content /></div>
+  </article>
+</BaseLayout>

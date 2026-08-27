@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { publishedConnect, publishedCredentials, siteConfig } from '../config/site';
+---
+
+<BaseLayout title={`About — ${siteConfig.name}`} description={siteConfig.description}>
+  <header class="pt-6 pb-14 border-b border-hairline">
+    <p class="font-mono text-[10px] tracking-[.12em] uppercase text-ink-muted">04 <span class="px-2">/</span> About</p>
+    <h1 class="mt-6 font-serif text-6xl md:text-8xl leading-[.9]">Bohara Satharasinghe.</h1>
+    <p class="mt-10 max-w-3xl text-xl leading-relaxed text-ink-secondary">{siteConfig.role} at the <a class="underline underline-offset-4 decoration-hairline hover:decoration-ink" href={siteConfig.affiliations.marc} target="_blank" rel="noopener noreferrer">Multidisciplinary AI Research Centre</a>, <a class="underline underline-offset-4 decoration-hairline hover:decoration-ink" href={siteConfig.affiliations.university} target="_blank" rel="noopener noreferrer">University of Peradeniya</a>.</p>
+  </header>
+
+  <div class="grid gap-8 lg:grid-cols-[.75fr_1.25fr] py-14">
+    <figure class="rounded-[32px] bg-soft border border-hairline p-5 self-start">
+      <img src="/profile.jpg" alt="Portrait of Januda Bohara" width="900" height="1125" class="w-full aspect-[4/5] object-cover rounded-[18px] saturate-[.82] sepia-[.08]" loading="lazy" />
+      <figcaption class="mt-4 font-mono text-[10px] tracking-[.12em] uppercase text-ink-muted">Portrait <span class="px-2">/</span> Januda Bohara</figcaption>
+    </figure>
+
+    <div class="glass-panel rounded-[32px] p-7 md:p-12">
+      <p class="font-serif text-3xl md:text-4xl leading-snug">My work moves between research, software, electronics, mobile development, and interface design.</p>
+      <p class="mt-8 text-ink-secondary leading-7">This site is a selective record of technical work, collaborative field notes, and journal writing. Entries are published only when their details, media, and destinations are ready.</p>
+
+      <div class="grid sm:grid-cols-2 gap-8 mt-12 pt-8 border-t border-hairline">
+        {publishedConnect.length > 0 && (
+          <section>
+            <h2 class="font-mono text-[10px] tracking-[.12em] uppercase text-ink-muted">Connect</h2>
+            <ul class="mt-5 space-y-3 text-sm">
+              {publishedConnect.map((item) => <li><a href={item.href} target={item.href.startsWith('http') ? '_blank' : undefined} rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}>{item.label} <span aria-hidden="true">↗</span></a></li>)}
+            </ul>
+          </section>
+        )}
+        {publishedCredentials.length > 0 && (
+          <section>
+            <h2 class="font-mono text-[10px] tracking-[.12em] uppercase text-ink-muted">Profiles & credentials</h2>
+            <ul class="mt-5 space-y-3 text-sm">
+              {publishedCredentials.map((item) => <li><a href={item.href} target="_blank" rel="noopener noreferrer">{item.label} <span aria-hidden="true">↗</span></a></li>)}
+            </ul>
+          </section>
+        )}
+      </div>
+    </div>
+  </div>
+</BaseLayout>

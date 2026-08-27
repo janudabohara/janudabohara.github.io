@@ -1,0 +1,29 @@
+---
+import { getCollection } from 'astro:content';
+import ImageMat from '../../components/ImageMat.astro';
+import MetadataRow from '../../components/MetadataRow.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('technical-work', ({ data }) => !data.draft);
+  return entries.map(entry => ({ params: { slug: entry.slug }, props: { entry } }));
+}
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+const links = [['Repository',entry.data.repository],['Demo',entry.data.demo],['Publication',entry.data.publication]].filter((item): item is [string,string] => Boolean(item[1]));
+---
+<BaseLayout title={`${entry.data.title} — Januda Bohara`} description={entry.data.summary} type="article" image={entry.data.coverImage?.src}>
+  <article>
+    <header class="pt-6 pb-14 border-b border-hairline">
+      <MetadataRow items={['Technical Work', entry.data.date.getFullYear().toString(), entry.data.role]} />
+      <h1 class="mt-7 font-serif text-6xl md:text-8xl leading-[.9]">{entry.data.title}</h1>
+      <p class="mt-10 max-w-3xl text-xl leading-relaxed text-ink-secondary">{entry.data.summary}</p>
+      {links.length > 0 && <nav aria-label="Project links" class="flex flex-wrap gap-3 mt-8">{links.map(([label,href]) => <a class="rounded-full border border-hairline bg-white/40 px-4 py-2 text-sm" href={href} target="_blank" rel="noopener noreferrer">{label} ↗</a>)}</nav>}
+    </header>
+    {entry.data.coverImage && entry.data.altText && <div class="my-12"><ImageMat src={entry.data.coverImage.src} alt={entry.data.altText} caption={entry.data.title} folio="PROJECT IMAGE" /></div>}
+    <div class="grid gap-8 lg:grid-cols-[1fr_2fr] py-10">
+      <aside class="glass-panel rounded-[28px] p-7 self-start"><MetadataRow items={['Technologies']} /><ul class="mt-5 space-y-2 text-sm text-ink-secondary">{entry.data.technologies.map(item => <li>{item}</li>)}</ul></aside>
+      <div class="article-copy glass-panel rounded-[32px] p-7 md:p-12"><Content /></div>
+    </div>
+  </article>
+</BaseLayout>

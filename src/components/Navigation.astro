@@ -1,0 +1,19 @@
+---
+import MobileNav from './islands/MobileNav';
+const links = [
+  ['Technical Work', '/technical-work'], ['Field Notes', '/field-notes'], ['Journal', '/journal'], ['About', '/about']
+] as const;
+---
+<header class="fixed top-5 left-5 right-5 z-50 glass-nav rounded-[20px] max-w-[1280px] mx-auto">
+  <div class="px-4 md:px-6 h-[72px] flex items-center justify-between">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4">Skip to content</a>
+    <a href="/" class="relative z-[60] flex items-center gap-3 hover:opacity-70 transition-opacity" aria-label="Januda Bohara — home">
+      <img src="/brand/jb-monogram.png" alt="" width="32" height="32" class="w-8 h-8 object-contain" />
+      <span class="font-mono text-[10px] font-medium tracking-[.12em] uppercase hidden sm:block">Januda Bohara</span>
+    </a>
+    <nav class="hidden md:flex gap-9 text-sm text-ink-secondary" aria-label="Primary navigation">
+      {links.map(([label, href]) => <a href={href} class="hover:text-ink transition-colors">{label}</a>)}
+    </nav>
+    <MobileNav links={links.map(([label, href]) => ({ label, href }))} client:load />
+  </div>
+</header>

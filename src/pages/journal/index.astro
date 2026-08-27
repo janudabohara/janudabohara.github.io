@@ -1,0 +1,9 @@
+---
+import { getCollection } from 'astro:content';
+import ArchivePage from '../../components/ArchivePage.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const entries = (await getCollection('journal', ({ data }) => !data.draft)).sort((a,b) => (a.data.displayOrder ?? 999) - (b.data.displayOrder ?? 999) || b.data.date.valueOf() - a.data.date.valueOf());
+const items = entries.map((entry, index) => ({ slug: entry.slug, title: entry.data.title, summary: entry.data.excerpt ?? entry.data.summary, tags: entry.data.tags, folio: `JL-${String(index + 1).padStart(3,'0')}`, url: `/journal/${entry.slug}`, date: entry.data.date.toLocaleDateString('en',{year:'numeric',month:'short',day:'numeric'}) }));
+---
+<BaseLayout title="Journal — Januda Bohara"><ArchivePage folio="03" title="Journal" description="Research notes, technical reflections, and carefully edited essays. Drafts never enter production." items={items} label="Entries" /></BaseLayout>

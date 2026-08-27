@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --portfolio-color-background-canvas: #fbf8f2;
+    --portfolio-color-background-soft: #f4efe6;
+    --portfolio-color-surface-glass: rgba(255, 255, 255, .62);
+    --portfolio-color-text-primary: #171714;
+    --portfolio-color-text-secondary: #555149;
+    --portfolio-color-text-muted: #777168;
+    --portfolio-color-border-subtle: #e9e1d4;
+    --portfolio-color-border-glass: rgba(255, 255, 255, .72);
+    --portfolio-color-accent-peach: #eacbba;
+    --portfolio-color-accent-sage: #d9ded1;
+  }
+
+  html { scroll-behavior: smooth; }
+  body { @apply min-w-[320px] bg-canvas text-ink antialiased selection:bg-ink selection:text-white; }
+  :focus-visible { outline: 2px solid var(--portfolio-color-text-primary); outline-offset: 4px; }
+  h1, h2, h3 { text-wrap: balance; }
+  p { text-wrap: pretty; }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-white/[.62] backdrop-blur-2xl backdrop-saturate-150 border border-white/[.72] shadow-[0_12px_36px_rgba(33,28,20,.07),inset_0_1px_0_rgba(255,255,255,.66)];
+  }
+  .glass-card {
+    @apply bg-white/[.56] hover:bg-white/[.72] backdrop-blur-xl backdrop-saturate-150 border border-white/[.72] shadow-[0_12px_36px_rgba(33,28,20,.06),inset_0_1px_0_rgba(255,255,255,.66)] transition-[background-color,transform,box-shadow] duration-300;
+  }
+  .glass-nav {
+    @apply bg-white/[.62] backdrop-blur-2xl backdrop-saturate-150 border border-white/[.72] shadow-[0_12px_36px_rgba(33,28,20,.07),inset_0_1px_0_rgba(255,255,255,.66)];
+  }
+  .glass-mat { @apply bg-soft/80 backdrop-blur-lg border border-hairline shadow-[inset_0_1px_0_rgba(255,255,255,.6),0_8px_28px_rgba(33,28,20,.05)]; }
+}
+
+.noise-overlay {
+  position: fixed; inset: 0; z-index: -1; opacity: .035; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.article-copy { @apply text-ink-secondary text-[1.05rem] leading-8; }
+.article-copy :where(h2,h3) { @apply font-serif text-ink font-medium mt-12 mb-5; }
+.article-copy h2 { @apply text-4xl; }
+.article-copy h3 { @apply text-3xl; }
+.article-copy p { @apply my-6; }
+.article-copy a { @apply text-ink underline underline-offset-4 decoration-hairline hover:decoration-ink; }
+.article-copy ul { @apply my-6 list-disc pl-6 space-y-2; }
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass-panel, .glass-card, .glass-nav, .glass-mat { background: rgba(251,248,242,.96); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+}

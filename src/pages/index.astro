@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TechWall from '../components/TechWall.astro';
+import { siteConfig } from '../config/site';
+
+const collections = [
+  { folio: '01', title: 'Technical Work', description: 'Engineering, software, AI, and research.', href: '/technical-work' },
+  { folio: '02', title: 'Field Notes', description: 'Events, organizing, creative work, and collaborations.', href: '/field-notes' },
+  { folio: '03', title: 'Journal', description: 'Research notes, essays, and technical reflections.', href: '/journal' },
+];
+---
+
+<BaseLayout title={`${siteConfig.name} — Portfolio`} description={siteConfig.description}>
+  <header class="pt-6 md:pt-10 pb-20 md:pb-24">
+    <p class="font-mono text-[10px] md:text-[11px] tracking-[.12em] uppercase text-ink-muted">Portfolio <span class="px-3">/</span> {siteConfig.location}</p>
+    <h1 class="mt-7 font-serif font-medium text-[clamp(4rem,8vw,7rem)] leading-[.9] tracking-[-.035em]">Januda Bohara.</h1>
+    <p class="mt-12 md:mt-16 max-w-3xl text-lg md:text-xl leading-relaxed text-ink-secondary">{siteConfig.description}</p>
+  </header>
+
+  <section aria-labelledby="collections-heading" class="pb-20">
+    <h2 id="collections-heading" class="sr-only">Collections</h2>
+    <div class="grid gap-5 md:grid-cols-3">
+      {collections.map((collection) => (
+        <a href={collection.href} class="group glass-card rounded-[28px] p-7 md:p-8 min-h-52 flex flex-col">
+          <span class="font-mono text-[10px] tracking-[.12em] uppercase text-ink-muted">{collection.folio} <span class="px-2">/</span> Collection</span>
+          <h3 class="mt-6 font-serif text-4xl leading-none">{collection.title}</h3>
+          <p class="mt-auto pt-8 text-sm leading-relaxed text-ink-secondary">{collection.description}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section aria-labelledby="stack-heading" class="pb-8">
+    <p class="font-mono text-[10px] tracking-[.12em] uppercase text-ink-muted">Capability matrix <span class="px-2">/</span> Usage context, not percentages</p>
+    <div class="glass-panel rounded-[32px] p-6 md:p-10 mt-6">
+      <h2 id="stack-heading" class="font-serif text-4xl md:text-5xl leading-tight mb-8">A professional working toolkit.</h2>
+      <TechWall />
+    </div>
+  </section>
+</BaseLayout>
